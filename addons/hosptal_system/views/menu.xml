@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="hospital_menu_root" name="Hospital"/>
+    <menuitem id="hospital_menu_root" name="Hospital" sequence="7"/>
 
-    <menuitem id="menu_front_desk" name="Front Desk" parent="hospital_menu_root"/>
+    <menuitem id="menu_front_desk" name="Actions" parent="hospital_menu_root"/>
 
     <menuitem 
         id="menu_patients" 
