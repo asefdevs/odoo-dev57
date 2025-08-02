@@ -4,7 +4,10 @@
     "version": "1.0",
     "license": "LGPL-3",
     "data": [
+        "security/ir.model.access.csv",
         "views/patient_views.xml",
         "views/menu.xml",
     ],
+    "installable": True,
+    "application": True,
 }

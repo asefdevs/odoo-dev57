@@ -3,8 +3,8 @@
     <record id="action_hospital_patient" model="ir.actions.act_window">
         <field name="name">Patients</field>
         <field name="res_model">hospital.patient</field>
-        <field name="view_mode">tree, form</field>
-        <field name="help" type="html">
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="xml">
             <p class="o_view_nocontent_smiling_face">
                 Create your first patient record
             </p>
