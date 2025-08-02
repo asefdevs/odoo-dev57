@@ -4,7 +4,7 @@
     'summary': 'Add custom fields to CRM leads',
     'category': 'Sales',
     'author': 'Your Name',
-    'depends': ['crm', 'base'],   # CRM modülüne bağımlılık
+    'depends': ['crm'],  
     'data': [
     'views/crm.xml',
     ],
