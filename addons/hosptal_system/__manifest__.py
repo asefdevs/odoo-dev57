@@ -5,6 +5,7 @@
     "license": "LGPL-3",
     "data": [
         "security/ir.model.access.csv",
+        "data/sequence.xml",
         "views/patient_views.xml",
         "views/appointment_views.xml",
         "views/menu.xml",
