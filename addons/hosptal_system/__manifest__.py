@@ -8,6 +8,7 @@
         "views/patient_views.xml",
         "views/menu.xml",
     ],
+    "depends": ["mail"],
     "installable": True,
     "application": True,
 }
