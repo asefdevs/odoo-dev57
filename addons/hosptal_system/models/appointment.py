@@ -13,7 +13,12 @@ class Appointment(models.Model):
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, tracking=True)
     appointment_date = fields.Datetime(string='Appointment Date', required=True, tracking=True)
     note = fields.Text(string='Notes', tracking=True)
-
+    status = fields.Selection([
+        ('draft', 'Draft'),
+        ('confirmed', 'Confirmed'),
+        ('done', 'Done'),
+        ('cancelled', 'Cancelled')
+    ], string='Status', default='draft', tracking=True)
 
     @api.model
     def create(self, vals):
@@ -21,4 +26,7 @@ class Appointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment') or 'NEW'
         return super(Appointment, self).create(vals)
 
+    def action_confirm(self):
+        self.write({'status': 'confirmed'})
 
+    

@@ -8,6 +8,7 @@
                <field name="name" optional="show" />
                <field name="patient_id"/>
                <field name="appointment_date"/>
+               <field name="status"/>
             </tree>
         </field>
     </record>
@@ -17,6 +18,14 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <form string="Appointment Form">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight"/>
+                </header>
+                <header>
+                    <field name="status" widget="statusbar" 
+                    options="{'clickable': 1} "
+                    statusbarcolors="{'draft': 'blue', 'confirmed': 'orange', 'done': 'green', 'cancelled': 'red'}"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name" />
