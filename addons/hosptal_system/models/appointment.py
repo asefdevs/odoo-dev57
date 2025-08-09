@@ -26,7 +26,18 @@ class Appointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment') or 'NEW'
         return super(Appointment, self).create(vals)
 
-    def action_confirm(self):
-        self.write({'status': 'confirmed'})
+    def action_done(self):
+        self.write({'status': 'done'})
+
+    def action_change(self):
+        for record in self:
+            if record.status == 'draft':
+                record.status = 'confirmed'
+            elif record.status == 'confirmed':
+                record.status = 'done'
+            elif record.status == 'done':
+                record.status = 'cancelled'
+            elif record.status == 'cancelled':
+                record.status = 'draft'
 
     

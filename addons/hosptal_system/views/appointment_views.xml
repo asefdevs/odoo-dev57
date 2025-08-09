@@ -19,7 +19,8 @@
         <field name="arch" type="xml">
             <form string="Appointment Form">
                 <header>
-                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Done" class="oe_highlight"/>
+                    <button name="action_change" type="object" string="Change Status" class="oe_highlight"/>
                 </header>
                 <header>
                     <field name="status" widget="statusbar" 
