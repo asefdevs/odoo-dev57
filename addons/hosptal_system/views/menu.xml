@@ -27,5 +27,11 @@
         parent="menu_front_desk" 
         action="action_hospital_patient_tag"
     />
+    <menuitem 
+        id="menu_appointment_lines" 
+        name="Appointment Lines" 
+        parent="menu_front_desk" 
+        action="action_hospital_appointment_line"
+    />
 
 </odoo>

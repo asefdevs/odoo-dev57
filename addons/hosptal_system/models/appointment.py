@@ -20,11 +20,29 @@ class Appointment(models.Model):
         ('cancelled', 'Cancelled')
     ], string='Status', default='draft', tracking=True)
 
+    appointment_line_ids = fields.One2many(
+        'hospital.appointment.line',
+        'appointment_id',
+        string='Appointment Lines',
+        help='Lines related to this appointment'
+    )
+
+    total_quantity = fields.Float(string='Quantity', compute='_compute_total_quantity', store=True)
+
+    @api.depends('appointment_line_ids.quantity')
+    def _compute_total_quantity(self):
+        for record in self:
+            record.total_quantity = sum(line.quantity for line in record.appointment_line_ids)
+
     @api.model
     def create(self, vals):
         if vals.get('name', 'NEW') == 'NEW':
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment') or 'NEW'
         return super(Appointment, self).create(vals)
+
+    def _compute_display_name(self):
+        for record in self:
+            record.display_name = f"{record.name} - {record.patient_id.name}"
 
     def action_done(self):
         self.write({'status': 'done'})
@@ -40,4 +58,11 @@ class Appointment(models.Model):
             elif record.status == 'cancelled':
                 record.status = 'draft'
 
-    
+
+class AppointmentLine(models.Model):
+    _name = 'hospital.appointment.line'
+    _description = 'Hospital Appointment Line'
+
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment', required=True )
+    product_id = fields.Many2one('product.product', string='Product', required=True)
+    quantity = fields.Float(string='Quantity', required=True)

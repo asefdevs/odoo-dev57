@@ -18,3 +18,15 @@ class Patient(models.Model):
         string='Tags',
         help='Tags to categorize the patient'
     )
+
+    appointment_ids = fields.One2many(
+        'hospital.appointment',
+        'patient_id',
+        string='Appointments',
+        help='Appointments related to this patient'
+    )
+    def _compute_display_name(self):
+        for record in self:
+            record.display_name = f"{record.name} - {record.age} - {record.gender}"
+            
+

@@ -9,9 +9,10 @@
         "views/patient_views.xml",
         "views/appointment_views.xml",
         "views/patient_tag_views.xml",
+        "views/appointment_line_views.xml",
         "views/menu.xml",
     ],
-    "depends": ["mail"],
+    "depends": ["mail", "product"],
     "installable": True,
     "application": True,
 }
