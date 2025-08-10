@@ -3,6 +3,9 @@
     <menuitem id="hospital_menu_root" name="Hospital" sequence="7"/>
 
     <menuitem id="menu_front_desk" name="Actions" parent="hospital_menu_root"/>
+    <menuitem id="menu_front_desk" name="Configurations" parent="hospital_menu_root"/>
+
+    
 
     <menuitem 
         id="menu_patients" 
@@ -16,6 +19,13 @@
         name= "Appointments"
         parent="menu_front_desk"
         action="action_hospital_appointment"
+    />
+
+    <menuitem 
+        id="menu_patient_tags" 
+        name="Patient Tags" 
+        parent="menu_front_desk" 
+        action="action_hospital_patient_tag"
     />
 
 </odoo>

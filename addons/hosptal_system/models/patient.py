@@ -13,3 +13,8 @@ class Patient(models.Model):
         ('female', 'Female'),
         ('other', 'Other')
     ], string='Gender', default='other', tracking=True)
+    patient_tag_ids = fields.Many2many(
+        'hospital.patient.tag',
+        string='Tags',
+        help='Tags to categorize the patient'
+    )
